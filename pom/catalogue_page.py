@@ -233,5 +233,5 @@ class CataloguePage:
     def verify_price_sorting(self, ascending=True):
         prices = self.get_product_prices()
         expected = sorted(prices, reverse=not ascending)
-        assert prices == expected, f"Name sorting failed. Expected: {expected}, Got: {names}"
+        assert prices == expected, f"Name sorting failed. Expected: {expected}, Got: {prices}"
         return self
