@@ -1,6 +1,7 @@
 import pytest
 
 from pom.login_page import LoginPage
+from pom.catalogue_page import CataloguePage
 from test_data import LoginTestData
 
 #Ensure the user can log in with valid credentials
@@ -77,4 +78,12 @@ def test_login_empty_password(goto_login_page, username) -> None:
     #And verify error message for empty username is displayed
     #And user not directed to product catalogue page
     login_page.verify_invalid_empty_password()
+
+
+#Login then Logout
+def test_login_logout(normal_login) -> None:
+    catalogue_page = CataloguePage(normal_login)
+    catalogue_page.goto_sidebar_logout()
+
+
 

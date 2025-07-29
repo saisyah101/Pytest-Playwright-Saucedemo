@@ -8,7 +8,6 @@ class CataloguePage:
         self.products_title = page.locator("[data-test='title']")
         self.cart_icon = page.locator("[data-test='shopping-cart-link']")
         self.cart_badge = page.locator("[data-test='shopping-cart-badge']")
-        self.sort_container = page.locator("[data-test='product-sort-container']")
         self.inventory_item = page.locator("[data-test='inventory-item']")
         self.item_label_name = page.locator("[data-test='inventory-item-name']")
         self.item_price = page.locator("[data-test='inventory-item-price']")
@@ -39,13 +38,24 @@ class CataloguePage:
             "onsie": self.page.locator("[data-test='remove-sauce-labs-onesie']"),
             "red_tshirt": self.page.locator("[data-test='remove-test.allthethings()-t-shirt-(red)']")
         }
+        self.sidebar_menu = page.get_by_role("button", name="Open Menu")
+        self.sidebar_close = page.get_by_role("button", name="Close Menu")
+        self.sidebar_inventory = page.locator("[data-test='inventory-sidebar-link']")
+        self.sidebar_about = page.locator("[data-test='about-sidebar-link']")
+        self.sidebar_logout = page.locator("[data-test='logout-sidebar-link']")
+        self.login_button = page.locator("[data-test='login-button']")
+        self.sidebar_reset= page.locator("[data-test='reset-sidebar-link']")
+        self.sort_container = page.locator("[data-test='product-sort-container']")
+        self.dropdown = page.locator("select.product_sort_container")
 
 
+###Catalogue Page
     def verify_catalogue_page_design(self):
         expect(self.products_title).to_be_visible()
         expect(self.cart_icon).to_be_visible()
         expect(self.cart_badge).not_to_be_visible()
         expect(self.sort_container).to_be_visible()
+        expect(self.sidebar_menu).to_be_visible()
         return self
 
     def verify_element(self, locator, expected_value, element_type):
@@ -94,10 +104,134 @@ class CataloguePage:
     def remove_button_clicks(self, products: list):
         return self.button_clicks(products, self.remove_buttons, "Remove button")
 
-    def verify_add_remove_product(self, products: list):
+    def add_all_products(self, products: list):
         self.verify_add_button_visible(products)
         self.add_button_clicks(products)
         self.verify_remove_button_visible(products)
+        expect(self.cart_badge).to_have_text("6")
+
+    def verify_add_remove_products(self, products: list):
+        self.add_all_products(products)
         self.remove_button_clicks(products)
         self.verify_add_button_visible(products)
+        return self
+
+###Sidebar Menu
+    def verify_sidebar_menu(self):
+        expect(self.sidebar_menu).to_be_visible()
+        self.sidebar_menu.click()
+        expect(self.sidebar_inventory).to_be_visible()
+        expect(self.sidebar_inventory).to_have_text("All Items")
+        expect(self.sidebar_about).to_be_visible()
+        expect(self.sidebar_about).to_have_text("About")
+        expect(self.sidebar_logout).to_be_visible()
+        expect(self.sidebar_logout).to_have_text("Logout")
+        expect(self.sidebar_reset).to_be_visible()
+        expect(self.sidebar_reset).to_have_text("Reset App State")
+        expect(self.sidebar_close).to_be_visible()
+        self.sidebar_close.click()
+        expect(self.sidebar_inventory).not_to_be_visible()
+        expect(self.sidebar_about).not_to_be_visible()
+        expect(self.sidebar_logout).not_to_be_visible()
+        expect(self.sidebar_reset).not_to_be_visible()
+
+        return self
+
+    def sidebar_menu_directs(self, target):
+        self.sidebar_menu.click()
+
+        if target == "All Items":
+            self.sidebar_inventory.click()
+            expect(self.page).to_have_url("/inventory.html")
+        elif target == "About":
+            self.sidebar_about.click()
+            expect(self.page).to_have_url("https://saucelabs.com/")
+            expect(self.page.get_by_text("Build apps users love with AI-driven insights")).to_be_visible()
+        elif target == "Logout":
+            self.sidebar_logout.click()
+            expect(self.login_button).to_be_visible()
+        elif target == "Reset":
+            self.sidebar_reset.click()
+            expect(self.cart_badge).not_to_be_visible()
+        else:
+            raise ValueError(f"Invalid sidebar target: {target}")
+
+        return self
+
+    def goto_sidebar_inventory(self):
+        return self.sidebar_menu_directs("All Items")
+
+    def goto_sidebar_about(self):
+        return self.sidebar_menu_directs("About")
+
+    def goto_sidebar_logout(self):
+        return self.sidebar_menu_directs("Logout")
+
+    def goto_sidebar_reset(self):
+        return self.sidebar_menu_directs("Reset")
+
+
+###Sorting Catalogue
+    def verify_sort_dropdown_options(self):
+        expect(self.sort_container).to_be_visible()
+        self.sort_container.click()
+
+        option_az = self.dropdown.select_option("option[value='az']")
+        expect(option_az).to_have_text("Name (A to Z)")
+
+        option_za = self.dropdown.locator("option[value='za']")
+        expect(option_za).to_have_text("Name (Z to A)")
+
+        option_lohi = self.dropdown.locator("option[value='lohi']")
+        expect(option_lohi).to_have_text("Price (low to high)")
+
+        option_hilo = self.dropdown.locator("option[value='hilo']")
+        expect(option_hilo).to_have_text("Price (high to low)")
+        return self
+
+    ## get text of products name
+    def get_product_names(self):
+        return self.item_label_name.all_inner_texts()
+
+    ##get text of product prices (remove the $$$)
+    def get_product_prices(self):
+        price_texts = self.item_price.all_inner_texts()
+        return [float(price.replace('$', '')) for price in price_texts]
+
+    ##select option sort a-z
+    def select_option_az(self):
+        self.dropdown.select_option("az")
+        self.page.wait_for_timeout(500)
+        return self
+
+    ##select option sort z-a
+    def select_option_za(self):
+        self.dropdown.select_option("za")
+        self.page.wait_for_timeout(500)
+        return self
+
+    ##select option sort price low-high
+    def select_option_lohi(self):
+        self.dropdown.select_option("lohi")
+        self.page.wait_for_timeout(500)
+        return self
+
+    ##select option sort price high-low
+    def select_option_hilo(self):
+        self.dropdown.select_option("hilo")
+        self.page.wait_for_timeout(500)
+        return self
+
+    ##verify name sorting result is correct
+    def verify_name_sorting(self, ascending=True):
+        names = self.get_product_names()
+        expected = sorted(names, reverse=not ascending)
+        assert names == expected, f"Name sorting failed. Expected: {expected}, Got: {names}"
+        return self
+
+    ##verify price sorting result is correct
+    def verify_price_sorting(self, ascending=True):
+        prices = self.get_product_prices()
+        expected = sorted(prices, reverse=not ascending)
+        assert prices == expected, f"Name sorting failed. Expected: {expected}, Got: {names}"
         return self
