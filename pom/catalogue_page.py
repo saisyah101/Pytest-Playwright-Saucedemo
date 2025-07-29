@@ -47,6 +47,7 @@ class CataloguePage:
         self.sidebar_reset= page.locator("[data-test='reset-sidebar-link']")
         self.sort_container = page.locator("[data-test='product-sort-container']")
         self.dropdown = page.locator("select.product_sort_container")
+        self.back_button = page.locator("[data-test='back-to-products']")
 
 
 ###Catalogue Page
@@ -235,3 +236,37 @@ class CataloguePage:
         expected = sorted(prices, reverse=not ascending)
         assert prices == expected, f"Name sorting failed. Expected: {expected}, Got: {prices}"
         return self
+
+    def goto_product_detail_page(self, product_name, price, desc):
+        self.item_label_name.nth(0).click()
+        expect(self.back_button).to_be_visible()
+        expect(self.item_label_name).to_have_text(product_name)
+        expect(self.item_price).to_have_text(price)
+        expect(self.desc_pdp).to_have_text(desc)
+        expect(self.add_button_pdp).to_be_visible()
+        return self
+
+    def add_product_pdp_click(self):
+        self.add_button_pdp.click()
+        expect(self.add_button_pdp).not_to_be_visible()
+        expect(self.remove_button_pdp).to_be_visible()
+        expect(self.cart_badge).to_be_visible()
+        expect(self.cart_badge).to_have_text("1")
+        return self
+
+    def remove_product_pdp_click(self):
+        self.remove_button_pdp.click()
+        expect(self.remove_button_pdp).not_to_be_visible()
+        expect(self.add_button_pdp).to_be_visible()
+        expect(self.cart_badge).not_to_be_visible()
+        return self
+
+    def back_to_products_page(self):
+        self.back_button.click()
+        expect(self.back_button).not_to_be_visible()
+        expect(self.add_button_pdp).not_to_be_visible()
+        expect(self.remove_button_pdp).not_to_be_visible()
+        expect(self.sort_container).to_be_visible()
+        return self
+
+

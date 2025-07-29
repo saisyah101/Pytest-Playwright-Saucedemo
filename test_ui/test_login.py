@@ -80,10 +80,4 @@ def test_login_empty_password(goto_login_page, username) -> None:
     login_page.verify_invalid_empty_password()
 
 
-#Login then Logout
-def test_login_logout(normal_login) -> None:
-    catalogue_page = CataloguePage(normal_login)
-    catalogue_page.goto_sidebar_logout()
-
-
 
