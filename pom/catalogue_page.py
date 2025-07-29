@@ -176,7 +176,7 @@ class CataloguePage:
         expect(self.sort_container).to_be_visible()
         self.sort_container.click()
 
-        option_az = self.dropdown.select_option("option[value='az']")
+        option_az = self.dropdown.locator("option[value='az']")
         expect(option_az).to_have_text("Name (A to Z)")
 
         option_za = self.dropdown.locator("option[value='za']")
