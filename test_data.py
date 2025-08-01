@@ -1,4 +1,5 @@
-
+import random
+from itertools import combinations
 
 class LoginTestData:
 
@@ -39,4 +40,21 @@ class CatalogueData:
     #all products
     all_products = ["backpack","bike","bolt_tshirt","jacket","onsie","red_tshirt"]
 
+    # selected products
+    selected_products = ["backpack","bike","bolt_tshirt","onsie","red_tshirt"]
 
+    #combine selected products
+    @classmethod
+    def generate_ordered_combinations(cls):
+        result = []
+        n = len(cls.selected_products)
+        for i in range(n):
+            for j in range(i + 1, n + 1):
+                result.append(cls.selected_products[i:j])
+        return result
+
+    # get combination
+    @classmethod
+    def get_random_combination(cls):
+        all_combos = cls.generate_ordered_combinations()
+        return random.choice(all_combos)

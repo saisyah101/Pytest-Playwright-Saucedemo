@@ -143,7 +143,7 @@ class CataloguePage:
 
         if target == "All Items":
             self.sidebar_inventory.click()
-            expect(self.page).to_have_url("/inventory.html")
+            expect(self.page).to_have_url("https://www.saucedemo.com/inventory.html")
         elif target == "About":
             self.sidebar_about.click()
             expect(self.page).to_have_url("https://saucelabs.com/")

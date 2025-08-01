@@ -1,3 +1,4 @@
+import pytest
 import test_data
 from conftest import normal_login
 from pom.catalogue_page import CataloguePage
