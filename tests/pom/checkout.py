@@ -153,7 +153,7 @@ class Checkout:
         self.calculated_subtotal = total_calculated
         expected_value = f"Item total: ${self.calculated_subtotal:.2f}"
         actual_value = self.subtotal_label.inner_text()
-        expect(self.subtotal_label).to_have_text(expected_value), f"Expected: {expected_value} but got Actual:{actual_value}"
+        assert actual_value == expected_value, f"Expected: '{expected_value}' but got Actual: '{actual_value}'"
         return self
 
     def verify_tax(self):
@@ -162,14 +162,14 @@ class Checkout:
         self.calculated_tax = expected_tax
         expected_value = f"Tax: ${self.calculated_tax:.2f}"
         actual_value = self.tax_label.inner_text()
-        expect(self.tax_label).to_have_text(expected_value), f"Expected: {expected_value} but got Actual:{actual_value}"
+        assert actual_value==expected_value, f"Expected: {expected_value} but got Actual:{actual_value}"
         return self
 
     def verify_total_price(self):
         expected_total_price = round(self.calculated_subtotal+self.calculated_tax,2)
         expected_value = f"Total: ${expected_total_price:.2f}"
         actual_value = self.total_label.inner_text()
-        expect(self.total_label).to_have_text(expected_value), f"Expected: {expected_value} but got Actual:{actual_value}"
+        assert actual_value == expected_value, f"Expected: {expected_value} but got Actual:{actual_value}"
         return self
 
     def verify_cart_page(self):

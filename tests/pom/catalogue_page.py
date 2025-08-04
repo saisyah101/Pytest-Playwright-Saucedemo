@@ -237,9 +237,12 @@ class CataloguePage:
         assert prices == expected, f"Name sorting failed. Expected: {expected}, Got: {prices}"
         return self
 
-    def goto_product_detail_page(self, product_name, price, desc):
-        self.item_label_name.nth(0).click()
+    def goto_product_detail_page(self, i):
+        self.item_label_name.nth(i).click()
         expect(self.back_button).to_be_visible()
+        return self
+
+    def verify_product_detail_page(self, product_name, price, desc):
         expect(self.item_label_name).to_have_text(product_name)
         expect(self.item_price).to_have_text(price)
         expect(self.desc_pdp).to_have_text(desc)
