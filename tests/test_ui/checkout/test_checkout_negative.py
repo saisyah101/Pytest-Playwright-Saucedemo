@@ -1,6 +1,6 @@
-import test_data
 import pytest
-from conftest import normal_login
+from tests import test_data
+from tests.conftest import normal_login
 from tests.pom.checkout import Checkout
 from tests.pom.catalogue_page import CataloguePage
 

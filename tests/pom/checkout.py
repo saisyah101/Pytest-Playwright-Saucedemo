@@ -1,6 +1,6 @@
 from playwright.sync_api import Page,expect
 
-import test_data
+from tests import test_data
 
 
 class Checkout:

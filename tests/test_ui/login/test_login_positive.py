@@ -1,6 +1,6 @@
 import pytest
 from tests.pom.login_page import LoginPage
-from test_data import LoginTestData
+from tests.test_data import LoginTestData
 
 
 #Ensure the user can log in with valid credentials

@@ -1,5 +1,5 @@
-import test_data
-from conftest import normal_login
+from tests import test_data
+from tests.conftest import normal_login
 from tests.pom.catalogue_page import CataloguePage
 
 def test_sidebar_menu(normal_login):

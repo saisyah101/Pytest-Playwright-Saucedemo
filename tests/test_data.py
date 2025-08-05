@@ -19,6 +19,12 @@ class LoginTestData:
     # Standard User
     STD_USERNAME = "standard_user"
 
+    #Problem user
+    PROBLEM_USER = "problem_user"
+
+    #Error user
+    ERR_USER = "error_user"
+
 
 class CatalogueData:
     #expected name

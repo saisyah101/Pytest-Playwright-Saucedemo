@@ -1,11 +1,11 @@
-import test_data
 import pytest
-from conftest import normal_login
+from tests import test_data
+from tests.conftest import normal_login
 from tests.pom.catalogue_page import CataloguePage
 
 def test_catalogue_page_layout(normal_login):
     catalogue_page = CataloguePage(normal_login)
-    catalogue_page.verify_catalogue_page_design()
+    catalogue_page.verify_catalogue_page_element()
 
 def test_catalogue_items_content(normal_login):
     catalogue_page = CataloguePage(normal_login)

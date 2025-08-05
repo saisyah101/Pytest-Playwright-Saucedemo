@@ -51,7 +51,11 @@ class CataloguePage:
 
 
 ###Catalogue Page
-    def verify_catalogue_page_design(self):
+    def verify_catalogue_page_element(self):
+        """
+        To verify products title, cart icon, sort container, and sidebar menu are visible
+        And to verify cart badge is not visible in the initial state
+        """
         expect(self.products_title).to_be_visible()
         expect(self.cart_icon).to_be_visible()
         expect(self.cart_badge).not_to_be_visible()
@@ -59,7 +63,10 @@ class CataloguePage:
         expect(self.sidebar_menu).to_be_visible()
         return self
 
-    def verify_element(self, locator, expected_value, element_type):
+    def verify_specific_element(self, locator, expected_value, element_type):
+        """
+        To verify text of specific element is as expected
+        """
         actual_count = locator.count()
         expected_count = len(expected_value)
         assert actual_count == expected_count, f"Expected {expected_count} {element_type} items, but found {actual_count}"
@@ -70,40 +77,44 @@ class CataloguePage:
         return self
 
     def verify_item_name(self, expected_name: list):
-        #verify all item name
-        return self.verify_element(self.item_label_name, expected_name, "name")
+        """
+        To verify text of every item label name is as expected
+        """
+        return self.verify_specific_element(self.item_label_name, expected_name, "name")
 
     def verify_item_price(self, expected_price:list ):
-        #verify all item price
-        return self.verify_element(self.item_price, expected_price, "price")
+        """
+        To verify text of every item price is as expected
+        """
+        return self.verify_specific_element(self.item_price, expected_price, "price")
 
-    def verify_item_visible(self, products:list, locator_map, element_type):
+    def verify_specific_item_visible(self, products:list, locator_map, element_type):
         for product in products:
             assert product in locator_map, f"{element_type} not found for product: '{product}'"
             product_locator = locator_map[product]
             expect(product_locator).to_be_visible()
         return self
 
-    def button_clicks(self, products:list, locator_map, element_type):
+    def action_button_clicks(self, products:list, locator_map, element_type):
         for product in products:
             assert product in locator_map, f"Cannot click {element_type} for product: '{product}'"
             locator_map[product].click()
         return self
 
     def verify_item_image(self, products:list):
-        return self.verify_item_visible(products, self.image_products,"Image products")
+        return self.verify_specific_item_visible(products, self.image_products, "Image products")
 
     def verify_add_button_visible(self, products: list):
-        return self.verify_item_visible(products, self.add_buttons, "Add button")
+        return self.verify_specific_item_visible(products, self.add_buttons, "Add button")
 
     def verify_remove_button_visible(self, products: list):
-        return self.verify_item_visible(products, self.remove_buttons, "Remove button")
+        return self.verify_specific_item_visible(products, self.remove_buttons, "Remove button")
 
     def add_button_clicks(self, products: list):
-        return self.button_clicks(products, self.add_buttons, "Add button")
+        return self.action_button_clicks(products, self.add_buttons, "Add button")
 
     def remove_button_clicks(self, products: list):
-        return self.button_clicks(products, self.remove_buttons, "Remove button")
+        return self.action_button_clicks(products, self.remove_buttons, "Remove button")
 
     def add_all_products(self, products: list):
         self.verify_add_button_visible(products)
