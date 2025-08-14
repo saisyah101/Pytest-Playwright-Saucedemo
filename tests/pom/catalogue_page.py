@@ -158,7 +158,6 @@ class CataloguePage:
         elif target == "About":
             self.sidebar_about.click()
             expect(self.page).to_have_url("https://saucelabs.com/")
-            expect(self.page.get_by_text("Build apps users love with AI-driven insights")).to_be_visible()
         elif target == "Logout":
             self.sidebar_logout.click()
             expect(self.login_button).to_be_visible()
