@@ -89,6 +89,9 @@ class CataloguePage:
         return self.verify_specific_element(self.item_price, expected_price, "price")
 
     def verify_specific_item_visible(self, products:list, locator_map, element_type):
+        """
+        To verify specific item is visible
+        """
         for product in products:
             assert product in locator_map, f"{element_type} not found for product: '{product}'"
             product_locator = locator_map[product]
@@ -96,6 +99,9 @@ class CataloguePage:
         return self
 
     def action_button_clicks(self, products:list, locator_map, element_type):
+        """
+        To click action button
+        """
         for product in products:
             assert product in locator_map, f"Cannot click {element_type} for product: '{product}'"
             locator_map[product].click()

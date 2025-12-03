@@ -1,8 +1,8 @@
 import pytest
 from tests import test_data
 from tests.conftest import normal_login
-from tests.pom.checkout import Checkout
-from tests.pom.catalogue_page import CataloguePage
+from tests.pages.checkout import Checkout
+from tests.pages.catalogue_page import CataloguePage
 
 
 #Ensure user failed to checkout, miscalculation of subtotal price

@@ -27,6 +27,7 @@ class LoginTestData:
 
 
 class CatalogueData:
+
     #expected name
     expected_name_list = ["Sauce Labs Backpack",
         "Sauce Labs Bike Light",
@@ -51,6 +52,7 @@ class CheckOutData:
     # selected products
     selected_products = ["backpack","bike","bolt_tshirt","onsie","red_tshirt"]
 
+    # failed product
     FAILED_PRODUCT_SETS = [
         ["bolt_tshirt", "backpack", "onsie", "red_tshirt", "bike"],
         ["bolt_tshirt", "red_tshirt", "backpack", "bike", "onsie"],
@@ -78,8 +80,7 @@ class CheckOutData:
         all_combos = cls.generate_ordered_combinations()
         return random.choice(all_combos)
 
-
-
+    # get failed product
     @classmethod
     def get_failed_product_set(cls):
         return random.choice(cls.FAILED_PRODUCT_SETS)

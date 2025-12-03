@@ -1,7 +1,7 @@
 import pytest
 from tests import test_data
 from tests.conftest import normal_login
-from tests.pom.catalogue_page import CataloguePage
+from tests.pages.catalogue_page import CataloguePage
 
 def test_catalogue_page_layout(normal_login):
     catalogue_page = CataloguePage(normal_login)

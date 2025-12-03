@@ -1,6 +1,6 @@
 from tests import test_data
 from tests.conftest import normal_login
-from tests.pom.catalogue_page import CataloguePage
+from tests.pages.catalogue_page import CataloguePage
 
 def test_sidebar_menu(normal_login):
     catalogue_page = CataloguePage(normal_login)

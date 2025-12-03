@@ -1,6 +1,6 @@
 import pytest
 from tests.conftest import problem_user_login, error_user_login
-from tests.pom.problem_user import KnownBug
+from tests.pages.problem_user import KnownBug
 
 def test_bug_catalogue_problem_user(problem_user_login):
     """
