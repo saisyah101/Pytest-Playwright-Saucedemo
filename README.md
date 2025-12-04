@@ -183,10 +183,10 @@ pytest --browser webkit</pre>
 <li>Add to cart from catalogue page</li>
 
 
-## Author
-<div align="right"><a href="#table-of-contents">Back to Top</a></div>
-**Siti Aisyah** <br>
+# Author
+Siti Aisyah<br>
 [LinkedIn](https://www.linkedin.com/in/saisyah)
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 
 
