@@ -12,9 +12,11 @@ A comprehensive end-to-end test automation framework for [Saucedemo](https://sau
 - [Author](#author)
 
 ## Overview
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 This project demonstrates automated testing of the Saucedemo e-commerce application using modern testing practices. The framework is built with Python, leveraging Playwright for browser automation and Pytest for test execution, following the Page Object Model (POM) design pattern for maintainability and scalability.
 
 ## Features
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 <li> Page Object Model Architecture: clean separation of test logic and page interactions </li>
 <li> Comprehensive Test Coverage: login, catalogue, checkout, navigation, and bug detection tests </li>
 <li> Parameterized Testing: data-driven tests using pytest parametrize </li>
@@ -26,6 +28,7 @@ This project demonstrates automated testing of the Saucedemo e-commerce applicat
 
 
 ## Project Structure
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 <pre>
 Pytest-Playwright-Saucedemo/
 ├── tests/
@@ -57,8 +60,8 @@ Pytest-Playwright-Saucedemo/
 </pre>
 
 ## Prerequisites
-
-Before running this project, ensure you have the following installed:
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
+<h4>Before running this project, ensure you have the following installed:</h4>
 
 <li> Python 3.8+ </li>
 <li> Node.js (for Playwright installation) </li>
@@ -66,7 +69,7 @@ Before running this project, ensure you have the following installed:
 <li> Git </li>
 
 ## Installation
-
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 <h3>1. Clone the repository</h3>
 <pre>bash<br>
 git clone https://github.com/saisyah101/Pytest-Playwright-Saucedemo.git
@@ -135,7 +138,7 @@ pytest --browser webkit</pre>
 
 
 ## Test Coverage
-
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 <h3>Checkout Tests</h3>
 <h3>Positive Scenarios (test_checkout_positive.py)</h3>
 <li>Complete checkout with valid customer information</li>
@@ -181,11 +184,9 @@ pytest --browser webkit</pre>
 
 
 ## Author
-
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 **Siti Aisyah** <br>
 [LinkedIn](https://www.linkedin.com/in/saisyah)
-
-[Back to Top](#back-to-top)
 
 
 
