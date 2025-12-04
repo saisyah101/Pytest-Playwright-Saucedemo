@@ -1,10 +1,15 @@
-<h1> Automation Portofolio : Pytest Playwright Saucedemo </h1>
-A comprehensive end-to-end test automation framework for [SauceDemo](https://www.saucedemo.com) e-commerce website using Pytest and Playwright with Python.
+# Automation Portofolio : Pytest Playwright Saucedemo
+A comprehensive end-to-end test automation framework for [Saucedemo](https://saucedemo.com) e-commerce website using Pytest and Playwright with Python.
 
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
 - [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running Tests](#running-tests)
+- [Test Coverage](#test-coverage)
+- [Author](#author)
 
 ## Overview
 This project demonstrates automated testing of the Saucedemo e-commerce application using modern testing practices. The framework is built with Python, leveraging Playwright for browser automation and Pytest for test execution, following the Page Object Model (POM) design pattern for maintainability and scalability.
@@ -179,6 +184,8 @@ pytest --browser webkit</pre>
 
 **Siti Aisyah** <br>
 [LinkedIn](https://www.linkedin.com/in/saisyah)
+
+[Back to Top](#back-to-top)
 
 
 
