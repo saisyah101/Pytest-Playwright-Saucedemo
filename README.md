@@ -12,11 +12,11 @@ A comprehensive end-to-end test automation framework for [Saucedemo](https://sau
 - [Author](#author)
 
 ## Overview
+This project demonstrates automated testing of the Saucedemo e-commerce website using modern testing practices. The framework is built with Python, leveraging Playwright for browser automation and Pytest for test execution, following the Page Object Model (POM) design pattern for maintainability and scalability.
 <div align="right"><a href="#table-of-contents">Back to Top</a></div>
-This project demonstrates automated testing of the Saucedemo e-commerce application using modern testing practices. The framework is built with Python, leveraging Playwright for browser automation and Pytest for test execution, following the Page Object Model (POM) design pattern for maintainability and scalability.
+
 
 ## Features
-<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 <li> Page Object Model Architecture: clean separation of test logic and page interactions </li>
 <li> Comprehensive Test Coverage: login, catalogue, checkout, navigation, and bug detection tests </li>
 <li> Parameterized Testing: data-driven tests using pytest parametrize </li>
@@ -25,10 +25,10 @@ This project demonstrates automated testing of the Saucedemo e-commerce applicat
 <li> Cross-Browser Support: compatible with Chromium, Firefox, and WebKit </li>
 <li> Known Bug Detection: dedicated tests for identifying problem user scenarios </li>
 <li> Price Calculation Verification: automated validation of subtotal, tax, and total amounts </li>
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 
 ## Project Structure
-<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 <pre>
 Pytest-Playwright-Saucedemo/
 ├── tests/
@@ -58,18 +58,18 @@ Pytest-Playwright-Saucedemo/
 ├── package.json                   # Node dependencies
 └── package-lock.json
 </pre>
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ## Prerequisites
-<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 <h4>Before running this project, ensure you have the following installed:</h4>
 
 <li> Python 3.8+ </li>
 <li> Node.js (for Playwright installation) </li>
 <li> pip (Python package manager) </li>
 <li> Git </li>
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ## Installation
-<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 <h3>1. Clone the repository</h3>
 <pre>bash<br>
 git clone https://github.com/saisyah101/Pytest-Playwright-Saucedemo.git
@@ -98,6 +98,7 @@ npm install</pre>
 <h3>5. Install Playwright browsers</h3>
 <pre>bash<br>
 playwright install</pre>
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 ## Running Tests
 <h3>Run all tests</h3>
@@ -135,10 +136,10 @@ pytest --browser chromium<br>
 pytest --browser firefox<br>
 # WebKit (Safari engine)
 pytest --browser webkit</pre>
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 
 ## Test Coverage
-<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 <h3>Checkout Tests</h3>
 <h3>Positive Scenarios (test_checkout_positive.py)</h3>
 <li>Complete checkout with valid customer information</li>
@@ -181,6 +182,7 @@ pytest --browser webkit</pre>
 <li>Product sorting functionality</li>
 <li>Product detail page navigation</li>
 <li>Add to cart from catalogue page</li>
+<div align="right"><a href="#table-of-contents">Back to Top</a></div>
 
 
 # Author
